@@ -19,7 +19,7 @@ scrapy runspider scrapy/scraper.py
 
 Alunos:
 
-Carlos Eduardo Taborda Lottermann - 18/004159
+Carlos Eduardo Taborda Lottermann - 18/0041509
 
 Gabriel Delolmo Erhardt - 17/0142612
 
