@@ -1,5 +1,22 @@
 # Projeto de Disciplina PAA
 
+## Como rodar
+
+É necessário ter o scrapy instalado e ser capaz de executá-lo. Numa máquina linux roda
+
+```
+sudo pip install scrapy
+```
+
+Em seguida para rodar o web-crawler usa-se
+
+```
+scrapy runspider scrapy/scraper.py
+```
+
+
+## Participantes
+
 Alunos:
 
 Carlos Eduardo Taborda Lottermann - 18/004159
