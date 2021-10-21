@@ -36,3 +36,7 @@ class firstSpider(scrapy.Spider):
         print("-----------------------")
         print(links_salvos)
         
+        f = open("LISTA_LINKS.txt", 'wb+')
+        f.write(links_salvos)
+        f.close
+        
