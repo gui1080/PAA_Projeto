@@ -19,7 +19,7 @@ scrapy runspider scrapy/scraper.py
 
 Alunos:
 
-Carlos Eduardo Taborda Lottermann - 18/004159
+Carlos Eduardo Taborda Lottermann - 18/0041509
 
 Gabriel Delolmo Erhardt - 17/0142612
 
@@ -27,4 +27,4 @@ Gabriel Nardelli Aprá - 18/0046322
 
 Guilherme Braga Pinto - 17/0162290
 
-Rafael - 17/0043827
+Rafael B. - 17/0043827
