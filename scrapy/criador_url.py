@@ -3,6 +3,8 @@ def pega_url():
     
     # tratando busca simples
     
+    qnts_paginas = int(input("Quantas páginas devem ser baixadas?\n"))
+    
     keyword = str(input("Digite sua keyword.\n"))
     keyword = keyword.replace(' ', '+')
     
@@ -28,43 +30,7 @@ def pega_url():
         
         keyword = keyword + keywords_a_serem_ignoradas
         
-    while(1):
-        
-        add_or = str(input("Adicionar um 'OR' nessa busca?[Y/N]"))
-
-        if(add_or == 'Y' or add_or == 'y'):
-            
-            nova_keyword = str(input("Digite sua keyword.\n"))
-            nova_keyword = nova_keyword.replace(' ', '+')
-            busca_string = str(input("Deve ser buscada essa string exata?[Y/N]\n"))
-            
-            if(busca_string == 'Y' or busca_string == 'y'):
-                
-                # busca de termo exato é entre aspas
-                nova_keyword = '"' + nova_keyword + '"'
-                
-            keyword = keyword + '+' + 'OR' + '+' + nova_keyword
-            
-        add_and = str(input("Adicionar um 'AND' nessa busca?[Y/N]"))
-            
-        if(add_and == 'Y' or add_and == 'y'):
-            
-            nova_keyword = str(input("Digite sua keyword.\n"))
-            nova_keyword = nova_keyword.replace(' ', '+')
-            busca_string = str(input("Deve ser buscada essa string exata?[Y/N]\n"))
-            
-            if(busca_string == 'Y' or busca_string == 'y'):
-                
-                # busca de termo exato é entre aspas
-                nova_keyword = '"' + nova_keyword + '"'
-                
-            keyword = keyword + '+' + 'AND' + '+' + nova_keyword
-        
-        
-        if( (add_or == 'N' or add_or == 'n') and (add_and == 'N' or add_and == 'n')):
-            print("Url finalizada!")
-            break
-        
+       
     # url básica
     url = "https://www.google.com/search?q=" + keyword
     
@@ -75,5 +41,16 @@ def pega_url():
     
     # a classe recebe a string na lista
     lista_urls.append(url)
+    
+    # pegando as páginas seguintes do google
+    for i in range(qnts_paginas):
+        pag = 10
+        prox_pag = "&start=" + str(pag)
+        
+        url_prox_pag = url + prox_pag
+        print("PROXPAG")
+        print(url_prox_pag)
+        lista_urls.append(url_prox_pag)
+        pag = pag + 10
     
     return lista_urls 
