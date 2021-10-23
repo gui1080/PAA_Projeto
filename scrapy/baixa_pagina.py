@@ -1,20 +1,17 @@
-import requests
 from bs4 import BeautifulSoup
 
-def pega_pagina(url, contador):
+def pega_pagina(response, contador):
     
-    html = requests.get(url)
-    
-    soup = BeautifulSoup(html.text)
+    soup = BeautifulSoup(response.text)
 
-    arq_nome = 'pagina' + str(contador) + '.html'
+    arq_nome = './downloaded_pages/pagina' + str(contador) + '.html'
 
     f = open(arq_nome, 'w')
     f.write(soup.prettify())
     f.close
     
     f = open("LISTA_LINKS.txt", 'a')
-    f.write(url)
+    f.write(response.url)
     
     f.write("\n")
     

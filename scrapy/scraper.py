@@ -1,17 +1,21 @@
+import os
 import scrapy 
 from scrapy.linkextractors import LinkExtractor
-
-import urllib.request, urllib.error, urllib.parse
 
 from criador_url import pega_url 
 from baixa_pagina import pega_pagina
 
 # scrapy runspider scraper.py
 
-class firstSpider(scrapy.Spider): 
+class firstSpider(scrapy.Spider):
+
+    try:
+        os.mkdir("./downloaded_pages")
+    except FileExistsError:
+        pass
     
     name = "basic"
-    start_urls = pega_url(); 
+    start_urls = pega_url()
   
     # uma url qualquer do google:
     # "https://www.google.com/search?q=fazendo+teste"
@@ -29,12 +33,16 @@ class firstSpider(scrapy.Spider):
             
             print(link, "\n", link.text, "\n", link.url, "\n")
             links_salvos.append(link.url)
+            print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             
             linkatual = link.url
             
-            Pagina = pega_pagina(linkatual, contador)
+            print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
+            Pagina = pega_pagina(response, contador)
             contador = contador + 1
+            print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
             linksprasalvar.append(linkatual)
+            print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
             
                 
         print("-----------------------")
