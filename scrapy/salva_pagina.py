@@ -1,10 +1,13 @@
 from bs4 import BeautifulSoup
 
-def salva_pagina(response, contador):
+contador = 0
+
+def salva_pagina(response):
+    global contador
     
     soup = BeautifulSoup(response.text)
 
-    arq_nome = './downloaded_pages/pagina' + str(contador) + '.html'
+    arq_nome = f"./downloaded_pages/pagina{str(contador)}.html"
 
     f = open(arq_nome, 'w')
     f.write(soup.prettify())
@@ -12,9 +15,9 @@ def salva_pagina(response, contador):
     
     f = open("LISTA_LINKS.txt", 'a')
     f.write(response.url)
-    
     f.write("\n")
-    
     f.close
+
+    contador += 1
     
     return True

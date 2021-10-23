@@ -1,14 +1,16 @@
 import os
 import scrapy 
 from scrapy.linkextractors import LinkExtractor
+from scrapy.http import Request
 
 from criador_url import pega_url 
 from salva_pagina import salva_pagina
 
-# scrapy runspider scraper.py
+fb_pages = 0
+MAX_FB_PAGES = 500
+
 
 class firstSpider(scrapy.Spider):
-
     try:
         os.mkdir("./downloaded_pages")
     except FileExistsError:
@@ -17,34 +19,18 @@ class firstSpider(scrapy.Spider):
     name = "basic"
     start_urls = pega_url()
   
-    # uma url qualquer do google:
-    # "https://www.google.com/search?q=fazendo+teste"
-  
+
     def parse(self, response):
+        global fb_pages, MAX_FB_PAGES
         
         xlink = LinkExtractor()
-        links_salvos = []
-        contador = 0
-        linksprasalvar = []
+        salva_pagina(response)
         
-        print("LINKS EXTRAÍDOS!")
-        print("-----------------------")
         for link in xlink.extract_links(response):
+            if "facebook" in link.url:
+                if fb_pages > MAX_FB_PAGES:
+                    continue
+                fb_pages += 1
             
-            print(link, "\n", link.text, "\n", link.url, "\n")
-            links_salvos.append(link.url)
-            print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-            
-            linkatual = link.url
-            
-            print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-            Pagina = salva_pagina(response, contador)
-            contador = contador + 1
-            print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
-            linksprasalvar.append(linkatual)
-            print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-            
-                
-        print("-----------------------")
-        print(links_salvos)
-        
+            print(link.text, "\n", link.url, "\n")
+            yield Request(link.url)
