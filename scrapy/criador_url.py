@@ -3,9 +3,10 @@ def pega_url():
     
     # tratando busca simples
     
-    qnts_paginas = int(input("Quantas páginas devem ser baixadas?\n"))
+    # qnts_paginas = int(input("Quantas páginas devem ser baixadas?\n"))
     
     keyword = str(input("Digite sua keyword.\n"))
+    return [keyword]
     keyword = keyword.replace(' ', '+')
     
     busca_string = str(input("Deve ser buscada essa string exata?[Y/N]\n"))
@@ -29,6 +30,7 @@ def pega_url():
         keywords_a_serem_ignoradas = '+-' + keywords_a_serem_ignoradas.replace(' ', '+-')
         
         keyword = keyword + keywords_a_serem_ignoradas
+
         
        
     # url básica
