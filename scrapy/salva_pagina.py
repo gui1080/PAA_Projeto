@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-def pega_pagina(response, contador):
+def salva_pagina(response, contador):
     
     soup = BeautifulSoup(response.text)
 

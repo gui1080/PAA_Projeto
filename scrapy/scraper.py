@@ -3,7 +3,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 
 from criador_url import pega_url 
-from baixa_pagina import pega_pagina
+from salva_pagina import salva_pagina
 
 # scrapy runspider scraper.py
 
@@ -38,7 +38,7 @@ class firstSpider(scrapy.Spider):
             linkatual = link.url
             
             print("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB")
-            Pagina = pega_pagina(response, contador)
+            Pagina = salva_pagina(response, contador)
             contador = contador + 1
             print("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
             linksprasalvar.append(linkatual)
