@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import re
 
 
-def index():
+def index(dict):
     page = 0
 
     while 1:
