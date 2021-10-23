@@ -9,6 +9,7 @@ from baixa_pagina import pega_pagina
 # scrapy runspider scraper.py
 
 class firstSpider(scrapy.Spider): 
+    
     name = "basic"
     start_urls = pega_url(); 
   
@@ -20,6 +21,7 @@ class firstSpider(scrapy.Spider):
         xlink = LinkExtractor()
         links_salvos = []
         contador = 0
+        linksprasalvar = []
         
         print("LINKS EXTRAÍDOS!")
         print("-----------------------")
@@ -32,11 +34,9 @@ class firstSpider(scrapy.Spider):
             
             Pagina = pega_pagina(linkatual, contador)
             contador = contador + 1
+            linksprasalvar.append(linkatual)
+            
                 
         print("-----------------------")
         print(links_salvos)
-        
-        f = open("LISTA_LINKS.txt", 'wb+')
-        f.write(links_salvos)
-        f.close
         
