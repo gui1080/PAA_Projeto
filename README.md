@@ -27,4 +27,4 @@ Gabriel Nardelli Aprá - 18/0046322
 
 Guilherme Braga Pinto - 17/0162290
 
-Rafael B. - 17/0043827
+Rafael Barbosa de Sousa - 17/0043827
