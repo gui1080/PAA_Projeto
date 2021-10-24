@@ -5,3 +5,5 @@ LISTA_LINKS.txt
 index.log
 .vscode
 words
+bin
+*.out
