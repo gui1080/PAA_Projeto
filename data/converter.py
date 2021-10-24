@@ -11,7 +11,7 @@ while True:
     lines = f.readlines()
     f.close()
 
-    pageText = BeautifulSoup("".join(lines), 'html.parser').getText()
+    pageText = BeautifulSoup("".join(lines), 'html.parser').getText().lower()
 
     words = re.split('\W+', pageText)
 
