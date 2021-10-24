@@ -6,7 +6,7 @@ before:
 	mkdir index/bin || true
 	
 build: before
-	g++ index/src/index.cpp -o index/bin/index.out
+	g++ index/src/index.cpp index/src/tree.cpp -o index/bin/index.out
 
 index: 
 	./index/bin/index.out
