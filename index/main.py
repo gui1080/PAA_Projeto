@@ -4,5 +4,8 @@ from threading import Thread
 
 dict = {}
 
-Thread(target=index, args=(dict,)).start()
-Thread(target=search, args=(dict,)).start()
+index(dict)
+search(dict)
+
+# Thread(target=index, args=(dict,)).start()
+# Thread(target=search, args=(dict,)).start()
