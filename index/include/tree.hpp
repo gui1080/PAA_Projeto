@@ -17,13 +17,15 @@ enum Color {
 
 class TreeNode {
    public:
-    TreeNode(std::string _key, std::vector<uint32_t> value)
+    TreeNode(std::string _key, uint32_t value)
         : color(Red),
           key(_key),
-          indexList(value),
-          parentNode(nullptr) {}
+          parentNode(nullptr) {
+        this->indexList = std::vector<uint32_t>{value};
+    }
 
-    TreeNode *child[2] = {nullptr, nullptr}, *parentNode;
+    TreeNode *child[2] = {nullptr, nullptr},
+             *parentNode;
 
     std::string key;
     std::vector<uint32_t> indexList;
@@ -32,6 +34,20 @@ class TreeNode {
 
     inline uint8_t dir() {
         return this == parentNode->right ? RIGHT : LEFT;
+    }
+
+    inline void show(uint16_t level) {
+        printf("%*s%s: %s :%d\n", level * 2, "`", this->color == Black ? "B" : "R", key.c_str(), indexList.size());
+
+        level++;
+
+        if (this->left != nullptr) {
+            this->left->show(level);
+        }
+
+        if (this->right != nullptr) {
+            this->right->show(level);
+        }
     }
 };
 
@@ -42,9 +58,18 @@ class Tree {
     void rotate(TreeNode *pivot, uint8_t dir);
 
    public:
-    void insert(std::string &key, std::vector<uint32_t> value);
+    void insert(std::string &key, uint32_t value);
 
     std::vector<uint32_t> *getValue(std::string &);
+
+    inline void show() {
+        if (root == nullptr) {
+            printf("-\n");
+            return;
+        }
+
+        root->show(0);
+    }
 };
 
 #endif  // TREE_INCLUDE_H

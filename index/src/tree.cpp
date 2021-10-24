@@ -1,9 +1,32 @@
 #include "../include/tree.hpp"
 
-void Tree::insert(std::string &key, std::vector<uint32_t> value) {
-    TreeNode *newNode = new TreeNode(key, value);
+std::vector<uint32_t> *Tree::getValue(std::string &key) {
     if (this->root == nullptr) {
-        this->root = newNode;
+        return nullptr;
+    }
+
+    TreeNode *curNode = this->root;
+    int32_t stringDiff;
+
+    do {
+        stringDiff = curNode->key.compare(key);
+        if (stringDiff > 0) {
+            curNode = curNode->right;
+        } else if (stringDiff < 0) {
+            curNode = curNode->left;
+        }
+
+        if (curNode == nullptr) {
+            return nullptr;
+        }
+    } while (stringDiff != 0);
+
+    return &(curNode->indexList);
+}
+
+void Tree::insert(std::string &key, uint32_t value) {
+    if (this->root == nullptr) {
+        this->root = new TreeNode(key, value);
         return;
     }
 
@@ -13,14 +36,23 @@ void Tree::insert(std::string &key, std::vector<uint32_t> value) {
 
     while (child != nullptr) {
         parent = child;
-        if (parent->key.compare(key) > 0) {
+        int32_t stringDiff = parent->key.compare(key);
+
+        if (stringDiff > 0) {
             child = parent->right;
             dir = RIGHT;
-        } else {
+        } else if (stringDiff < 0) {
             child = parent->left;
             dir = LEFT;
+        } else {
+            if (parent->indexList.back() != value) {
+                parent->indexList.push_back(value);
+            }
+            return;
         }
     }
+
+    TreeNode *newNode = new TreeNode(key, value);
 
     newNode->parentNode = parent;
 
@@ -56,7 +88,7 @@ void Tree::insert(std::string &key, std::vector<uint32_t> value) {
 
         parent->color = Black;
         uncle->color = Black;
-        grandparent->color = Black;
+        grandparent->color = Red;
 
         newNode = grandparent;
 
