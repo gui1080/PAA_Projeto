@@ -1,7 +1,10 @@
-__pycache__
+__pycache__/
+.vscode/
+obj/
+bin/
+
 *.html
+*.out
+
 LISTA_LINKS.txt
 index.log
-.vscode
-bin
-*.out
