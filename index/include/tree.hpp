@@ -5,28 +5,46 @@
 #include <string>
 #include <vector>
 
+#define LEFT 0
+#define RIGHT 1
+#define left child[LEFT]
+#define right child[RIGHT]
+
 enum Color {
-  Black, Red
+    Black,
+    Red
 };
 
 class TreeNode {
-public:
-  TreeNode *parentNode,
-          *leftNode,
-          *rightNode;
+   public:
+    TreeNode(std::string _key, std::vector<uint32_t> value)
+        : color(Red),
+          key(_key),
+          indexList(value),
+          parentNode(nullptr) {}
 
-  std::vector<uint32_t> indexList;
+    TreeNode *child[2] = {nullptr, nullptr}, *parentNode;
 
-  Color color;
+    std::string key;
+    std::vector<uint32_t> indexList;
+
+    Color color;
+
+    inline uint8_t dir() {
+        return this == parentNode->right ? RIGHT : LEFT;
+    }
 };
 
 class Tree {
-  TreeNode *root;
+   private:
+    TreeNode *root = nullptr;
 
-public:
-  void insert(std::vector<uint32_t>);
+    void rotate(TreeNode *pivot, uint8_t dir);
 
-  std::vector<uint32_t> *getValue(std::string &);
+   public:
+    void insert(std::string &key, std::vector<uint32_t> value);
+
+    std::vector<uint32_t> *getValue(std::string &);
 };
 
 #endif  // TREE_INCLUDE_H

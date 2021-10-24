@@ -1,9 +1,12 @@
-.PHONY: install clean main index
+.PHONY: main build index before install 
 
-main: build index
+main: before build index
+
+before: 
+	mkdir index/bin || true
 	
-build:
-	g++ index/src/index.cpp -o index/bin/index.out
+build: before
+	g++ index/src/index.cpp index/src/tree.cpp -o index/bin/index.out
 
 index: 
 	./index/bin/index.out
