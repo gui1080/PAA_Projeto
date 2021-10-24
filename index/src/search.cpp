@@ -5,6 +5,9 @@ void search(Tree &wordTree) {
 
     while (true) {
         std::cin >> input;
+        
+        input = lower(input);
+
         std::vector<uint32_t> *vec = wordTree.getValue(input);
 
         if (vec == nullptr) {
