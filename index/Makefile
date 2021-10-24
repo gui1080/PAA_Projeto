@@ -24,6 +24,3 @@ obj/%.o: %.cpp
 
 clean:
 	$(RM) $(OBJ) $(BIN) obj bin
-
-run: $(BIN)
-	./$(BIN)
