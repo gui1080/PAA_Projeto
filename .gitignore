@@ -1,9 +1,7 @@
 __pycache__
-downloaded_pages
 *.html
 LISTA_LINKS.txt
 index.log
 .vscode
-words
 bin
 *.out
