@@ -1,15 +1,18 @@
-.PHONY: main build index before install 
+.PHONY: all build index install clean
 
-main: before build index
+all: build run
 
-before: 
+index/bin: 
 	mkdir index/bin || true
 	
-build: before
-	g++ index/src/index.cpp index/src/tree.cpp -o index/bin/index.out
+build:
+	make -C index
 
-index: 
+run: 
 	./index/bin/index.out
+
+clean:
+	make -C index clean
 
 install:
 	sudo pip install scrapy beautifulsoup4
