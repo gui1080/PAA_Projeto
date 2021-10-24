@@ -1,5 +1,9 @@
-.PHONY: clean main
+.PHONY: clean main index
 
-main:
-	python index/main.py
+main: build index
 	
+build:
+	g++ index/src/index.cpp -o index/bin/index
+
+index: 
+	./index/bin/index

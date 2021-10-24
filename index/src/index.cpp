@@ -7,7 +7,7 @@ int main(){
     std::string content;
 
     while(1){
-        file.open("../../words/pagina" + std::to_string(page) + ".html");
+        file.open("words/pagina" + std::to_string(page) + ".html");
         if(file){
 
             while(1){
