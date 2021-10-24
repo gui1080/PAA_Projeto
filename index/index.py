@@ -9,7 +9,7 @@ def index(dict):
 
     while 1:
         try:
-            f = open("./downloaded_pages/pagina" + str(page) + ".html", "r")
+            f = open("./data/downloaded_pages/pagina" + str(page) + ".html", "r")
         except:
             return
         lines = f.readlines()

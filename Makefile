@@ -1,5 +1,12 @@
-.PHONY: clean main
+.PHONY: install clean main index
 
-main:
-	python index/main.py
+main: build index
 	
+build:
+	g++ index/src/index.cpp -o index/bin/index.out
+
+index: 
+	./index/bin/index.out
+
+install:
+	sudo pip install scrapy beautifulsoup4

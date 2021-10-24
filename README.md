@@ -5,7 +5,7 @@
 É necessário ter o scrapy instalado e ser capaz de executá-lo. Numa máquina linux roda
 
 ```
-sudo pip install -r requirements.txt
+make install
 ```
 
 Em seguida para rodar o web-crawler usa-se
