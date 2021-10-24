@@ -4,7 +4,7 @@ page = 0
 
 while True:
     try:
-        f = open(f"./downloaded_pages/pagina{page}.html", "r")
+        f = open(f"./data/downloaded_pages/pagina{page}.html", "r")
     except:
         break
 
@@ -15,7 +15,7 @@ while True:
 
     words = re.split('\W+', pageText)
 
-    outFile = open(f"./words/pagina{page}.html", "w")
+    outFile = open(f"./data/words/pagina{page}.html", "w")
     outFile.write(" ".join(words))
     outFile.close()
 

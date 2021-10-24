@@ -10,11 +10,16 @@ fb_pages = 0
 MAX_FB_PAGES = 500
 
 
-class firstSpider(scrapy.Spider):
+def createDirs(path):
     try:
-        os.mkdir("./downloaded_pages")
+        os.makedirs(path)
     except FileExistsError:
         pass
+
+
+class firstSpider(scrapy.Spider):
+    createDirs("./data/downloaded_pages")
+    createDirs("./data/words")
 
     name = "basic"
     start_urls = pega_url()
