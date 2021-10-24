@@ -6,4 +6,6 @@
 
 std::string lower(std::string s);
 
+void trim(std::string &s);
+
 #endif  // UTILS_INCLUDE_H

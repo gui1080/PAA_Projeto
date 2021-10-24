@@ -11,4 +11,6 @@
 
 void index(Tree &wordTree);
 
+void readLinks(std::vector<std::string> &links);
+
 #endif  // INDEX_INCLUDE_H

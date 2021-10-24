@@ -5,7 +5,7 @@ void index(Tree &wordTree) {
     uint32_t page = 0;
     std::string content;
 
-    while (1) {
+    while (page <= 500) {
         file.open("data/words/pagina" + std::to_string(page) + ".html");
         if (file) {
             printf("begin %d", page);
@@ -28,5 +28,22 @@ void index(Tree &wordTree) {
         }
         page++;
         file.close();
+    }
+}
+
+void readLinks(std::vector<std::string> &links) {
+    std::ifstream file;
+    uint32_t page = 0;
+    std::string content;
+
+    file.open("data/LISTA_LINKS.txt");
+    if (!file) {
+        return;
+    }
+
+    while (!file.eof()) {
+        std::getline(file, content);
+        links.push_back(content);
+        page++;
     }
 }

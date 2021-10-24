@@ -4,10 +4,13 @@
 
 int main() {
     Tree wordTree;
+    std::vector<std::string> links;
 
     index(wordTree);
 
-    search(wordTree);
+    readLinks(links);
+
+    search(wordTree, links);
 
     return 0;
 }
