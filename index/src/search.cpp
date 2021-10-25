@@ -3,6 +3,10 @@
 void showLinks(std::vector<uint32_t> pages, std::vector<std::string> links) {
     for (int i = 0; i < pages.size(); i++) {
         uint32_t p = pages[i];
+        if (p >= links.size()) {
+            printf("Link %d não é um indice da lista de links(size:%d)\n", p, links.size());
+            exit(1);
+        }
         printf("pages[%d] = %d: %s\n", i, p, links[p].c_str());
     }
 }
