@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup
 
 contador = 0
 
-listFile = open("./data/LISTA_LINKS.txt", 'a')
-
 
 def salva_pagina(response):
     global contador
@@ -23,6 +21,7 @@ def salva_pagina(response):
     f.write(" ".join(words).lower())
     f.close()
 
+    listFile = open("./data/LISTA_LINKS.txt", 'a')
     listFile.write(response.url)
     listFile.write("\n")
 
