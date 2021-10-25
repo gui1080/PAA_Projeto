@@ -1,4 +1,4 @@
-.PHONY: all build index install clean
+.PHONY: all build index install clean crawl
 
 all: build run
 
@@ -16,3 +16,7 @@ clean:
 
 install:
 	sudo pip install scrapy beautifulsoup4
+
+crawl:
+	scrapy runspider scrapy/scraper.py
+	
