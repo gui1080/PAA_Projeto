@@ -10,6 +10,11 @@ typedef std::pair<std::string, std::vector<uint32_t> *> pair_key_vec;
 
 void search(Tree &wordTree, std::vector<std::string> &links);
 
+void addPages(std::vector<uint32_t> &, std::vector<uint32_t> &);
+
+std::vector<uint32_t> removePages(
+    std::vector<uint32_t> &, std::vector<uint32_t> &);
+
 std::vector<uint32_t> doAnd(std::vector<pair_key_vec> &);
 
 #endif  // SEARCH_INCLUDE_H

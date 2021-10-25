@@ -1,6 +1,6 @@
 #include "../include/tree.hpp"
 
-std::vector<uint32_t> *Tree::getValue(std::string &key) {
+std::vector<uint32_t> *Tree::getValue(std::string key) {
     if (this->root == nullptr) {
         return nullptr;
     }

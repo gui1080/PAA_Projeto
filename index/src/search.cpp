@@ -1,8 +1,9 @@
 #include "../include/search.hpp"
 
 void showLinks(std::vector<uint32_t> pages, std::vector<std::string> links) {
-    for (auto i : pages) {
-        printf("%d: %s\n", i, links[i].c_str());
+    for (int i = 0; i < pages.size(); i++) {
+        uint32_t p = pages[i];
+        printf("pages[%d] = %d: %s\n", i, p, links[p].c_str());
     }
 }
 
@@ -38,16 +39,26 @@ void search(Tree &wordTree, std::vector<std::string> &links) {
 
         std::vector<uint32_t> *vec;
         std::vector<pair_key_vec> pageVectors;
+        std::vector<uint32_t> pagesToRemove;
 
         for (auto s : wordList) {
-            vec = wordTree.getValue(s);
+            if (s[0] == '-') {
+                vec = wordTree.getValue(s.substr(1));
+            } else {
+                vec = wordTree.getValue(s);
+            }
 
             if (vec != nullptr) {
-                pageVectors.push_back(std::make_pair(s, vec));
+                if (s[0] == '-') {
+                    addPages(pagesToRemove, *vec);
+                } else {
+                    pageVectors.push_back(std::make_pair(s, vec));
+                }
             }
         }
 
-        std::vector<uint32_t> finalResult = doAnd(pageVectors);
+        std::vector<uint32_t> andResult = doAnd(pageVectors);
+        std::vector<uint32_t> finalResult = removePages(andResult, pagesToRemove);
 
         wordList.clear();
 
@@ -58,6 +69,51 @@ void search(Tree &wordTree, std::vector<std::string> &links) {
 
         showLinks(finalResult, links);
     }
+}
+
+void addPages(std::vector<uint32_t> &target, std::vector<uint32_t> &vec) {
+    auto targetIt = target.begin();
+    for (auto it = vec.begin(); it != vec.end(); it++) {
+        auto place = std::lower_bound(targetIt, target.end(), *it);
+
+        if (place == target.end()) {
+            target.insert(place, it, vec.end());
+            return;
+        }
+
+        if (*place == *it) {
+            continue;
+        }
+
+        target.insert(place, *it);
+
+        targetIt = place++;
+    }
+}
+
+std::vector<uint32_t> removePages(std::vector<uint32_t> &pages, std::vector<uint32_t> &pagesToRemove) {
+    std::vector<uint32_t> result;
+
+    auto removeIt = pagesToRemove.begin();
+
+    for (auto it = pages.begin(); it != pages.end(); it++) {
+        auto place = std::lower_bound(removeIt, pagesToRemove.end(), *it);
+
+        if (place == pagesToRemove.end()) {
+            result.insert(result.end(), it, pages.end());
+            return result;
+        }
+
+        if (*place == *it) {
+            continue;
+        }
+
+        result.push_back(*it);
+
+        removeIt = place++;
+    }
+
+    return result;
 }
 
 std::vector<uint32_t> doAnd(std::vector<pair_key_vec> &pageVectors) {

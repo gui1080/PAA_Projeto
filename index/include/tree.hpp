@@ -60,7 +60,7 @@ class Tree {
    public:
     void insert(std::string &key, uint32_t value);
 
-    std::vector<uint32_t> *getValue(std::string &);
+    std::vector<uint32_t> *getValue(std::string);
 
     inline void show() {
         if (root == nullptr) {
