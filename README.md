@@ -23,17 +23,16 @@ Carlos Eduardo Taborda Lottermann - 18/0041509
 
 Gabriel Delolmo Erhardt - 17/0142612
 
-Gabriel Nardelli Aprá - 18/0046322
-
 Guilherme Braga Pinto - 17/0162290
 
-Rafael Barbosa de Sousa - 17/0043827
 
 ## Funcionamento do Webcrawler
 
-A partir da biblioteca Scrapy, utilizou-se um Webcrawler para, a partir de uma lista de links, realizar o download de páginas fonte html com a função "LinkExtractor()". 
+A partir da biblioteca Scrapy, utilizou-se um Webcrawler para, a partir de uma lista de links, realizar o download de páginas fonte html.
 
-Essas páginas, agora salvas localmente e salvas em uma lista separadamente, podem ser usadas para a busca com o uso de uma estrutura de dados por meio de árvore. 
+Essas páginas, agora salvas localmente e salvas em uma lista separadamente, foram usadas para a busca por meio de árvore rubro-negra.
+
+A implementação do indexador e pesquisador foi feita em c++.
 
 ## Link do Projeto no Github
 

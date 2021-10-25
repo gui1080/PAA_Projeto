@@ -5,7 +5,7 @@ void index(Tree &wordTree) {
     uint32_t page = 0;
     std::string content;
 
-    while (page <= 500) {
+    while (true) {
         file.open("data/words/pagina" + std::to_string(page) + ".html");
         if (file) {
             printf("begin %d", page);
