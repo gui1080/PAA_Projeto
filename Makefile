@@ -1,14 +1,16 @@
-.PHONY: all build index install clean crawl rmv
+.PHONY: all build index install clean crawl
 
 all: build run
 
 index/bin: 
 	mkdir index/bin || true
 	
-build:
+build: index/bin/index.out
+
+index/bin/index.out:
 	make -C index
 
-run: 
+run: index/bin/index.out
 	./index/bin/index.out
 
 install:
