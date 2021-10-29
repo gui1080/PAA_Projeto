@@ -1,4 +1,4 @@
-.PHONY: all build index install clean crawl
+.PHONY: all build index install clean crawl rmv
 
 all: build run
 
@@ -18,4 +18,8 @@ crawl:
 	scrapy runspider scrapy/scraper.py
 	
 clean:
-	rm data/downloaded_pages/*.html data/words/*.html data/LISTA_LINKS.txt
+	rm -r data/downloaded_pages/ data/words/ data/LISTA_LINKS.txt || true
+	mkdir data/downloaded_pages/ data/words/ 
+	touch data/downloaded_pages/.gitkeep data/words/.gitkeep
+	
+
