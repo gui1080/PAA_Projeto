@@ -1,0 +1,38 @@
+Para instalar os requerimentos do scraper rodar
+
+make install
+
+Em seguida rodar o scraper com
+
+make crawl
+
+Por fim, rodar o indexador e buscador com
+
+make
+
+--------------------------------------
+
+leiame.txt README.md contêm informações sobre o projeto.
+
+.gitignore faz o git ignorar arquivos.
+
+Na pasta data ficam as páginas baixadas.
+
+Arquivos Makefile na pasta raiz e na pasta index para automatização dos processos
+relacionados a executar o software.
+
+Na pasta scrapy estão os arquivos
+    scraper.py que implementa a spider
+    salva_pagina.py que salva o html das páginas e palavras contidas nas mesmas
+    criador_url.py que pega as urls onde a spider começa.
+
+Na pasta index estão os arquivos cpp e hpp dentro das pastas src e include:
+    tree.[cpp/hpp]  contêm a implementação de uma árvore rubro-negra
+    index.[cpp/hpp] contêm funções que fazem a indexação das palavras
+    serch.[cpp/hpp] contêm funções que fazem a pesquisa de palavras
+    utils.[cpp/hpp] contêm funções auxiliares.
+
+Na pasta index também estão os arquivos main.py, index.py e search.py onde está
+uma implementação inicial do pesquisador em python usando dicts.
+
+initial_links.txt contêm os links onde a spider começa.
